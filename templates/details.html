@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>{{user.first_name}} {{user.last_name}}</h1>
+    <p>User Id:{{user.id}}</p>
+    <img src="{{user.image}}" alt="PokerFace" />
+    <a href="/">Go back to list</a>
+
+    <form>
+      <button action="/edit/{{user.id}}" formmethod="GET">Edit</button>
+    </form>
+    <form>
+      <button action="/delete/{{user.id}}" formmethod="POST">Delete</button>
+    </form>
+  </body>
+</html>

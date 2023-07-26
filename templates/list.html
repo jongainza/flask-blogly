@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>All Users</title>
+  </head>
+  <body>
+    <h1>All Users</h1>
+    <ul>
+      {% for us in users %}
+      <li><a href="/{{us.id}}">{{us.first_name}} {{us.last_name}}</a></li>
+      {% endfor %}
+    </ul>
+
+    <form action="/create_user">
+      <input type="submit" value="Create New User" />
+    </form>
+  </body>
+</html>
