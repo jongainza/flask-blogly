@@ -14,7 +14,7 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 app.config["SQLALCHEMY_ECHO"] = True
 app.config["SECRET_KEY"] = "jongainza"
 
-toolbar = DebugToolbarExtension(app)
+# toolbar = DebugToolbarExtension(app)
 
 connect_db(app)
 # db.create_all()
@@ -59,21 +59,32 @@ def delete_user(user_id):
     user = User.query.get_or_404(user_id)
     db.session.delete(user)
     db.session.commit()
-    redirect("/")
+    return redirect("/")
 
 
-@app.route("/edit/<int:user_id>")
-def edit_user():
+@app.route("/edit/<int:user_id>", methods=["GET"])
+def edit_user(user_id):
     "Shows form to create new user"
-    return render_template("edit.html")
+    user = User.query.get_or_404(user_id)
+    return render_template("edit.html", user=user)
 
 
 @app.route("/edit/<int:user_id>", methods=["POST"])
 def edit(user_id):
     user = User.query.get_or_404(user_id)
-    user.first_name = request.form["first_name"]
-    user.last_name = request.form["last_name"]
-    user.image = request.form["image"]
+    new_first_name = request.form["first_name"]
+    if not new_first_name:
+        new_first_name = user.first_name
+    new_last_name = request.form["last_name"]
+    if not new_last_name:
+        new_last_name = user.last_name
+    new_image = request.form["image"]
+    if not new_image:
+        new_image = user.image
+
+    user.first_name = new_first_name
+    user.last_name = new_last_name
+    user.image = new_image
 
     db.session.add(user)
     db.session.commit()

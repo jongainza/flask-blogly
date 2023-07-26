@@ -10,12 +10,11 @@
     <p>User Id:{{user.id}}</p>
     <img src="{{user.image}}" alt="PokerFace" />
     <a href="/">Go back to list</a>
-
-    <form>
-      <button action="/edit/{{user.id}}" formmethod="GET">Edit</button>
+    <form method="GET" action="/edit/{{user.id}}">
+      <button type="submit">Edit</button>
     </form>
-    <form>
-      <button action="/delete/{{user.id}}" formmethod="POST">Delete</button>
+    <form method="POST" action="/delete/{{user.id}}">
+      <button type="submit">Delete</button>
     </form>
   </body>
 </html>
