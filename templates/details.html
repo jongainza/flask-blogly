@@ -9,12 +9,33 @@
     <h1>{{user.first_name}} {{user.last_name}}</h1>
     <p>User Id:{{user.id}}</p>
     <img src="{{user.image}}" alt="PokerFace" />
-    <a href="/">Go back to list</a>
-    <form method="GET" action="/edit/{{user.id}}">
-      <button type="submit">Edit</button>
-    </form>
-    <form method="POST" action="/delete/{{user.id}}">
-      <button type="submit">Delete</button>
-    </form>
+    <section>
+      <a href="/">Go back to list</a>
+    </section>
+
+    <section>
+      <form method="GET" action="/edit/{{user.id}}">
+        <button type="submit">Edit</button>
+      </form>
+      <form method="POST" action="/delete/{{user.id}}">
+        <button type="submit">Delete</button>
+      </form>
+    </section>
+    <section>
+      {% if posts %}
+      <h3>Posts</h3>
+      <ul>
+        {% for post in user.posts %}
+        <li><a href="/post/details/{{post.id}}">{{post.title}}</a></li>
+        {% endfor %}
+      </ul>
+      {% else %}
+      <p>No posts available.</p>
+      {% endif %}
+
+      <form action="/add_post/{{user.id}}">
+        <button type="submit">Add Post</button>
+      </form>
+    </section>
   </body>
 </html>

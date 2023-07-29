@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h2>Post by {{post.user.first_name}}</h2>
+    <h3>Title: {{post.title}}</h3>
+    <p><b>Content:</b> {{post.content}}</p>
+    <section>
+      <form method="GET" action="/post/edit/{{post.id}}">
+        <button type="submit">Edit</button>
+      </form>
+      <form method="POST" action="/post/delete/{{post.id}}">
+        <button type="submit">Delete</button>
+      </form>
+    </section>
+    <section>
+      <a href="/">Cancel</a>
+    </section>
+  </body>
+</html>

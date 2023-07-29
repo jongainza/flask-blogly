@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Post</title>
+  </head>
+  <body>
+    <h2>Edit Post</h2>
+    <form action="/post/edit/{{post.id}}" method="POST">
+      <label for="title">New Title</label>
+      <input
+        type="text"
+        id="title"
+        name="title"
+        placeholder="Enter new Title"
+      />
+      <label for="content">New Content</label>
+      <input
+        type="text"
+        id="content"
+        name="content"
+        placeholder="Enter new Content"
+      />
+      <button type="submit">Edit</button>
+    </form>
+  </body>
+</html>
