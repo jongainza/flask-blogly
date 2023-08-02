@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tag Details</title>
+  </head>
+  <body>
+    <h1>{{tag.name}}</h1>
+    <ul>
+      {% if tag.associated_post %} {% for post in tag.associated_post %}
+      <li>
+        <b><a href="/post/details/{{post.id}}">{{post.title}}</a></b>
+      </li>
+
+      {% endfor %}
+      <section>
+        <form method="POST" action="/POST/tags/{{tag.id}}/delete">
+          <button type="submit">Delete</button>
+        </form>
+        <form method="GET" action="/GET/tags/{{tag.id}}/edit">
+          <button type="submit">Edit</button>
+        </form>
+        <a href="/GET/tags">Back.</a>
+      </section>
+      {% else %}
+      <p>
+        <a href="/GET/tags"> No Posts associated yet with this <b>TAG</b></a>
+      </p>
+      {% endif %}
+    </ul>
+  </body>
+</html>

@@ -22,6 +22,30 @@
         name="content"
         placeholder="Enter new Content"
       />
+      {% if tags %}
+      <h5>Add tags to the Post:</h5>
+      <div>
+        {% for tag in tags %}
+        <div>
+          <input
+            type="checkbox"
+            value="{{ tag.id }}"
+            id="tag_{{ tag.id }}"
+            {%
+            if
+            tag
+            in
+            post.tags
+            %}checked{%
+            endif
+            %}
+            name="tags"
+          />
+          <label for="tag_{{ tag.id }}"> {{ tag.name }} </label>
+        </div>
+        {% endfor %}
+      </div>
+      {% endif %}
       <button type="submit">Edit</button>
     </form>
   </body>

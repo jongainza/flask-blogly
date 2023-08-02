@@ -9,6 +9,15 @@
     <h2>Post by {{post.user.first_name}}</h2>
     <h3>Title: {{post.title}}</h3>
     <p><b>Content:</b> {{post.content}}</p>
+    <p><i>By {{post.user.first_name}} {{post.user.last_name}} on {{post.friendly_date}}</i></p>
+    {% if post.tags %}
+    <p><b>Tags:</b>
+    <ul>
+      {% for tag in post.tags %}
+      <li><a href="/GET/tags/{{tag.id}}">{{tag.name}}</a></li>
+      {% endfor %}
+    </ul></p>
+    {% endif %}
     <section>
       <form method="GET" action="/post/edit/{{post.id}}">
         <button type="submit">Edit</button>

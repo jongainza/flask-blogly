@@ -14,6 +14,23 @@
       <input type="text" id="content" name="content" placeholder="Enter Post" />
       <button type="submit">Add</button>
     </form>
+    <br />
+    {% if tags %}
+    <h5>Add tags to the Post:</h5>
+    {% for tag in tags %}
+    <form action="/new_post/{{user.id}}" method="POST">
+      <label for="tag_{{tag.id}}">
+        <input
+          type="checkbox"
+          name="tags"
+          value="{{tag.id}}"
+          id="tag_{{tag.id}}"
+        />
+        {{tag.name}}
+      </label>
+    </form>
+    {% endfor %} {% endif %}
+    <br />
     <a href="/{{user.id}}"><button>Cancel</button></a>
   </body>
 </html>

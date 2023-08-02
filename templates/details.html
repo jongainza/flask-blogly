@@ -23,7 +23,7 @@
     </section>
     <section>
       {% if posts %}
-      <h3>Posts</h3>
+      <h3>Posts:</h3>
       <ul>
         {% for post in user.posts %}
         <li><a href="/post/details/{{post.id}}">{{post.title}}</a></li>
